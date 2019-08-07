@@ -13,12 +13,12 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-const profileSchema = new mongoose.Schema({
+const profileSchema = mongoose.Schema({
   username: String,
   password: String
 });
 
-const storiesSchema = new mongoose.Schema({
+const storiesSchema = mongoose.Schema({
   Stories: Array
 });
 
@@ -27,7 +27,7 @@ const Profile = mongoose.model('Profile', profileSchema);
 const Stories = mongoose.model('Stories', storiesSchema);
 
 const createProfile = (profile, callback) => {
-  Profile.insertMany(profile, (err, Response) => {
+  Profile.insertMany({username: profile.UserName, password: profile.Password}, (err, Response) => {
     if (err) {
       callback(err);
     } else {
@@ -37,12 +37,10 @@ const createProfile = (profile, callback) => {
 }
 
 const logIn = (profile, callback) => {
-  Profile.findOne(profile, (err, Response) => {
+  Profile.find(profile, (err, Response) => {
     if (err) {
       callback(err);
-      console.log('err', err);
     } else {
-      console.log('res', Response);
       callback(null, Response);
     }
   });

@@ -9,12 +9,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 app.get('/logIn', (req, res) => {
-  // console.log('getting here', req.query);
   db.logIn(req.query, (err, Response) => {
     if (err) {
-      res.send(err).status(500).end();
+      res.sendStatus(500).end();
     } else {
       res.send(Response).status(200).end()
+    }
+  })
+})
+
+
+app.post('/newUser', (req, res) => {
+  db.createProfile(req.body,(err, Response) => {
+    if (err) {
+      res.sendStatus(500).end();
+    } else {
+      res.sendStatus(200);
     }
   })
 })
