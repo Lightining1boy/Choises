@@ -7,7 +7,7 @@ const MainPage = style.div`
 `
 const LogInButton = style.button`
   color: antiquewhite;
-  background-color: brown;
+  background-color: maroon;
 `;
 const LogInText = style.input`
   margin: 10px;
@@ -16,5 +16,5 @@ const LogInText = style.input`
 export {
   MainPage,
   LogInButton,
-  LogInText
+  LogInText,
 }

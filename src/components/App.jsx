@@ -3,13 +3,13 @@ import {MainPage, LogInButton, LogInText} from '../Styles/AppStyles.jsx'
 import axios from 'axios';
 import CreateProfile from './CreateProfile.jsx';
 import { userInfo } from 'os';
-
+import ChooseYourStory from './ChooseYourStory.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
       UserName: '',
       Password: '',
       stories: [],
@@ -73,9 +73,9 @@ class App extends React.Component {
       <MainPage>
         Your Story Begins Here!
         <br/>
-        <LogInText placeholder='   Enter UserName' value={UserName} name='UserName' onChange={(e) => this.logInData(e)}/>
+        <LogInText placeholder='  Enter UserName' value={UserName} name='UserName' onChange={(e) => this.logInData(e)}/>
         <br/>
-        <LogInText placeholder='   Enter Password' value={Password} name='Password' onChange={(e) => this.logInData(e)}/>
+        <LogInText placeholder='  Enter Password' value={Password} name='Password' onChange={(e) => this.logInData(e)}/>
         <br/>
         <LogInButton onClick={this.logIn}>Log In!!</LogInButton>
         <br/>
@@ -86,7 +86,7 @@ class App extends React.Component {
     }
     return(
       <MainPage>
-        hello world!!
+        <ChooseYourStory/>
       </MainPage>
     )
   }
