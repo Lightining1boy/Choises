@@ -18,7 +18,6 @@ class ChooseYourStory extends React.Component {
   }
 
   createStoryClicked() {
-    console.log('clicked')
     this.setState({createStory: true})
   }
 
