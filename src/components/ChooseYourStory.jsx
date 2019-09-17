@@ -37,7 +37,9 @@ class ChooseYourStory extends React.Component {
       return(<CreateStory/>)
     }
     return (<div>
-      <PTag>Choose your story!!</PTag>
+      <PTag>
+        Choose your story!!
+      </PTag>
       {story.map((story, index) => {
         if (story[0].title) {
           return (<StoryButtons onClick={() => this.storyClicked(story)} key={index} >{story[0].title}</StoryButtons>)

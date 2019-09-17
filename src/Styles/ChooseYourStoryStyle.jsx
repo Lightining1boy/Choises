@@ -4,7 +4,10 @@ const StoryButtons = style.button`
 color: antiquewhite;
 background-color: maroon;
 margin: 5px;
+border-style: inset;
 font-size: 20px;
+border-width: thick;
+border-color: bisque;
 `
 const PTag = style.p`
 font-size: 35px;
