@@ -9,9 +9,17 @@ font-size: 20px;
 border-width: thick;
 border-color: bisque;
 `
-const PTag = style.p`
+const PTag = style.h1`
 font-size: 35px;
-margin-bottom: 10px;
+width: 93%;
+background-color: maroon;
+color: antiquewhite;
+font-family: cursive;
+border-bottom-style: inset;
+border-radius: 4px;
+border-bottom-width: 6px;
+border-bottom-color: ghostwhite;
+margin: 10px;
 `
 const PopUp = style.div`
   position: fixed;
@@ -29,15 +37,46 @@ position: absolute;
 left: 25%;
 right: 25%;
 top: 25%;
-bottom: 25%;
+bottom: 23%;
 margin: auto;
 background: white;
-color: black;
+color: darkorange;
+background-color: maroon;
+border-style: inset;
+border-width: 5px;
+border-color: beige;
+font-size: larger;
+font-family: cursive;
 `
-
+const StartTextArea = style.textarea`
+margin: 0px;
+height: 45px;
+width: 335px;
+`
+const MainDiv = style.div`
+font-size: 35px;
+width: 20%;
+margin-bottom: 10px;
+margin-left: 40%;
+`
+const CreateStoryMainDiv = style.div`
+width: 28%;
+margin-left: 35.8%;
+font-size: 35px;
+background-color: maroon;
+color: antiquewhite;
+font-family: cursive;
+border-bottom-style: inset;
+border-radius: 4px;
+border-bottom-width: 6px;
+border-bottom-color: ghostwhite;
+`
 export {
   StoryButtons,
   PTag,
   PopUp,
-  InnerPopUp
+  InnerPopUp,
+  StartTextArea,
+  MainDiv,
+  CreateStoryMainDiv
 }

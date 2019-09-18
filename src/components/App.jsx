@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainPage, LogInButton, LogInText} from '../Styles/AppStyles.jsx'
+import {MainPage, LogInButton, LogInText, Header} from '../Styles/AppStyles.jsx'
 import axios from 'axios';
 import CreateProfile from './CreateProfile.jsx';
 import { userInfo } from 'os';
@@ -71,7 +71,7 @@ class App extends React.Component {
     else if (!isLoggedIn) {
       return (
       <MainPage>
-        Your Story Begins Here!
+        <Header>Your Story Begins Here!</Header>
         <br/>
         <LogInText placeholder='  Enter UserName' value={UserName} name='UserName' onChange={(e) => this.logInData(e)}/>
         <br/>

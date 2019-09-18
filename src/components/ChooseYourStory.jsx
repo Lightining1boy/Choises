@@ -1,6 +1,6 @@
 import React from 'react'
 import story from '../stories.js'
-import {StoryButtons, PTag} from '../Styles/ChooseYourStoryStyle.jsx'
+import {StoryButtons, PTag, MainDiv} from '../Styles/ChooseYourStoryStyle.jsx'
 import ChosenStory from './ChosenStory.jsx'
 import CreateStory from './CreateStory.jsx'
 
@@ -36,7 +36,7 @@ class ChooseYourStory extends React.Component {
     if(createStory) {
       return(<CreateStory/>)
     }
-    return (<div>
+    return (<MainDiv>
       <PTag>
         Choose your story!!
       </PTag>
@@ -47,7 +47,7 @@ class ChooseYourStory extends React.Component {
       })}
       <br/>
       <StoryButtons onClick={() => this.createStoryClicked()}>Create Your Own Story!!</StoryButtons>
-    </div>)
+    </MainDiv>)
   }
 }
 export default ChooseYourStory

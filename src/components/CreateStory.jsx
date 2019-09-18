@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {StoryButtons, PTag, PopUp, InnerPopUp} from '../Styles/ChooseYourStoryStyle.jsx'
+import {StoryButtons, PTag, PopUp, InnerPopUp, StartTextArea, CreateStoryMainDiv} from '../Styles/ChooseYourStoryStyle.jsx'
 
 const CreateStory = (props) => {
   const [startClicked, setStartClicked] = useState(false);
@@ -37,22 +37,27 @@ const CreateStory = (props) => {
     <PopUp>
       <InnerPopUp>
       Description:
-      <textarea onChange={(e) => textareaChange(e)} name="description" value={description}></textarea>
+      <br/>
+      <StartTextArea onChange={(e) => textareaChange(e)} name="description" value={description}></StartTextArea>
       <br/>
       Title:
-      <textarea onChange={(e) => textareaChange(e)} name="title" value={title}></textarea>
+      <br/>
+      <StartTextArea onChange={(e) => textareaChange(e)} name="title" value={title}></StartTextArea>
       <br/>
       Choice A:
-      <textarea onChange={(e) => textareaChange(e)} name="choice_A" value={choice_A}></textarea>
+      <br/>
+      <StartTextArea onChange={(e) => textareaChange(e)} name="choice_A" value={choice_A}></StartTextArea>
       <br/>
       Choice B:
-      <textarea onChange={(e) => textareaChange(e)} name="choice_B" value={choice_B}></textarea>
+      <br/>
+      <StartTextArea onChange={(e) => textareaChange(e)} name="choice_B" value={choice_B}></StartTextArea>
+      <br/>
       <StoryButtons onClick={() => saveClicked()}>Save</StoryButtons>
       </InnerPopUp>
     </PopUp>)
   }
   return(<div>
-    <PTag>Your Story Starts Here!!</PTag>
+    <CreateStoryMainDiv>Your Story Starts Here!!</CreateStoryMainDiv>
     <StoryButtons onClick={() => setStartClicked(true)}>Start</StoryButtons>
   </div>)
 }
