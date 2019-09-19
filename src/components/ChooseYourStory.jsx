@@ -3,6 +3,7 @@ import story from '../stories.js'
 import {StoryButtons, PTag, MainDiv} from '../Styles/ChooseYourStoryStyle.jsx'
 import ChosenStory from './ChosenStory.jsx'
 import CreateStory from './CreateStory.jsx'
+import ChooseStorySize from './ChooseStorySize.jsx'
 
 class ChooseYourStory extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class ChooseYourStory extends React.Component {
       return (<ChosenStory chosenStory={chosenStory} finishedStory={this.finishedStory}/>)
     }
     if(createStory) {
-      return(<CreateStory/>)
+      return(<ChooseStorySize/>)
     }
     return (<MainDiv>
       <PTag>
