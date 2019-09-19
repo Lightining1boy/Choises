@@ -2,7 +2,6 @@ import React from 'react'
 import story from '../stories.js'
 import {StoryButtons, PTag, MainDiv} from '../Styles/ChooseYourStoryStyle.jsx'
 import ChosenStory from './ChosenStory.jsx'
-import CreateStory from './CreateStory.jsx'
 import ChooseStorySize from './ChooseStorySize.jsx'
 
 class ChooseYourStory extends React.Component {

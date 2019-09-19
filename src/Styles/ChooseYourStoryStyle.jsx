@@ -60,8 +60,8 @@ margin-bottom: 10px;
 margin-left: 40%;
 `
 const CreateStoryMainDiv = style.div`
-width: 28%;
-margin-left: 35.8%;
+width: 32%;
+margin-left: 33.8%;
 font-size: 35px;
 background-color: maroon;
 color: antiquewhite;
@@ -71,6 +71,14 @@ border-radius: 4px;
 border-bottom-width: 6px;
 border-bottom-color: ghostwhite;
 `
+const TrueFalseSelector = style.select`
+width: 15%;
+font-family: cursive;
+font-size: 24px;
+color: darkorange;
+background-color: maroon;
+border: transparent;
+`
 export {
   StoryButtons,
   PTag,
@@ -78,5 +86,6 @@ export {
   InnerPopUp,
   StartTextArea,
   MainDiv,
-  CreateStoryMainDiv
+  CreateStoryMainDiv,
+  TrueFalseSelector
 }
