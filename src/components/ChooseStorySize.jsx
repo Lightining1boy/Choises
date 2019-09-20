@@ -6,10 +6,13 @@ const ChooseStorySize = (props) => {
   const [smallStory, setSmallStory] = useState(false);
   const [mediumStory, setMediumStory] = useState(false);
   const [largeStory, setLargeStory] = useState(false);
-
+  
+  const smallCancelClicked = () => {
+    setSmallStory(false)
+  } 
   if (smallStory) {
     return (
-      <SmallStory/>
+      <SmallStory smallCancelClicked={() => smallCancelClicked()}/>
     )
   }
   return (
@@ -20,6 +23,8 @@ const ChooseStorySize = (props) => {
       <StorySizeButtons onClick={() => setSmallStory(true)} >Small Story</StorySizeButtons>
       <StorySizeButtons onClick={() => setMediumStory(true)} >Medium Story</StorySizeButtons>
       <StorySizeButtons onClick={() => setLargeStory(true)} >Large Story</StorySizeButtons>
+      <br/>
+      <StorySizeButtons onClick={() => props.cancelStoryClicked()}>Cancel</StorySizeButtons>
     </div>
   )
 }

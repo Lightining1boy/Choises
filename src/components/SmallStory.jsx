@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
-import {StoryButtons, PTag, PopUp, InnerPopUp, StartTextArea, CreateStoryMainDiv, TrueFalseSelector} from '../Styles/ChooseYourStoryStyle.jsx'
-
+import {StoryButtons, PopUp, InnerPopUp, StartTextArea, CreateStoryMainDiv, TrueFalseSelector} from '../Styles/ChooseYourStoryStyle.jsx'
+import axios from 'axios'
 
 const SmallStory = (props) => {
   const [startClicked, setStartClicked] = useState(false);
@@ -8,10 +8,17 @@ const SmallStory = (props) => {
   const [choice_A, setChoice_A] = useState('');
   const [choice_B, setChoice_B] = useState('');
   const [title, setTitle] = useState('');
-  const [start, setStart] = useState({});
-  const [pathA, setPathA] = useState({});
+  const [ending, setEnding] = useState(false);
   const [selectedPath, setSelectedPath] = useState('');
   const [pathClicked, setPathClicked] = useState(false);
+  const [start, setStart] = useState({});
+  const [pathA, setPathA] = useState({});
+  const [pathB, setPathB] = useState({});
+  const [pathA_B, setPathA_B] = useState({});
+  const [pathA_A, setPathA_A] = useState({});
+  const [pathB_A, setPathB_A] = useState({});
+  const [pathB_B, setPathB_B] = useState({});
+  const [story, setStory] = useState([start, pathA, pathB, pathA_A, pathA_B, pathB_A, pathB_B])
 
   const textareaChange = (newDescription) => {
     const {value, name} = newDescription.target
@@ -23,6 +30,8 @@ const SmallStory = (props) => {
       setChoice_B(value)
     } else if (name === "title") {
       setTitle(value)
+    } else if (name === 'selector') {
+      setEnding(value)
     }
   }
 
@@ -42,6 +51,46 @@ const SmallStory = (props) => {
       setPathClicked(true)
       setSelectedPath('pathA')
     }
+    if (name === 'pathB') {
+      setChoice_A(pathB.choice_A);
+      setChoice_B(pathB.choice_B);
+      setDescription(pathB.description);
+      setTitle(pathB.title);
+      setPathClicked(true)
+      setSelectedPath('pathB')
+    }
+    if (name === 'pathB_A') {
+      setChoice_A(pathB_A.choice_A);
+      setChoice_B(pathB_A.choice_B);
+      setDescription(pathB_A.description);
+      setTitle(pathB_A.title);
+      setPathClicked(true)
+      setSelectedPath('pathB_A')
+    }
+    if (name === 'pathB_B') {
+      setChoice_A(pathB_B.choice_A);
+      setChoice_B(pathB_B.choice_B);
+      setDescription(pathB_B.description);
+      setTitle(pathB_B.title);
+      setPathClicked(true)
+      setSelectedPath('pathB_B')
+    }
+    if (name === 'pathA_A') {
+      setChoice_A(pathA_A.choice_A);
+      setChoice_B(pathA_A.choice_B);
+      setDescription(pathA_A.description);
+      setTitle(pathA_A.title);
+      setPathClicked(true)
+      setSelectedPath('pathA_A')
+    }
+    if (name === 'pathA_B') {
+      setChoice_A(pathA_B.choice_A);
+      setChoice_B(pathA_B.choice_B);
+      setDescription(pathA_B.description);
+      setTitle(pathA_B.title);
+      setPathClicked(true)
+      setSelectedPath('pathA_B')
+    }
   }
 
   const saveClicked = (name) => {
@@ -50,20 +99,59 @@ const SmallStory = (props) => {
       choice_A: choice_A,
       choice_B: choice_B,
       title: title,
-      Result_A: pathA
+      ending: ending
     }
     const newObj = JSON.parse(JSON.stringify(path));
+    console.log(start)
     if (name === 'start') {
       Object.assign(start, newObj)
+      start.Result_A = pathA
+      start.Result_B = pathB
       setStartClicked(false)
     }
     if (name === 'pathA') {
       Object.assign(pathA, newObj)
+      pathA.Result_A = pathA_A;
+      pathA.Result_B = pathA_B
+      setPathClicked(false)
+    }
+    if (name === 'pathB') {
+      Object.assign(pathB, newObj)
+      pathB.Result_A = pathB_A;
+      pathB.Result_B = pathB_B
+      setPathClicked(false)
+    }
+    if (name === 'pathB_A') {
+      Object.assign(pathB_A, newObj)
+      setPathClicked(false)
+    }
+    if (name === 'pathB_B') {
+      Object.assign(pathB_B, newObj)
+      setPathClicked(false)
+    }
+    if (name === 'pathA_A') {
+      Object.assign(pathA_A, newObj)
+      setPathClicked(false)
+    }
+    if (name === 'pathA_B') {
+      Object.assign(pathA_B, newObj)
       setPathClicked(false)
     }
     setChoice_A('');
     setChoice_B('');
     setDescription('');
+    setEnding(false);
+  }
+  const saveStoryClicked = () => {
+    console.log('getting here')
+    axios.post('/newStory', {story: story})
+    .then((Response) => {
+      console.log(Response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+    props.smallCancelClicked()
   }
   if(startClicked) {
     return(
@@ -107,9 +195,9 @@ const SmallStory = (props) => {
         <br/>
         Ending:
         <br/>
-        <TrueFalseSelector>
-          <option>True</option>
+        <TrueFalseSelector name={'selector'} value={ending} onChange={(e) => textareaChange(e)} >
           <option>False</option>
+          <option>True</option>
         </TrueFalseSelector>
         <br/>
         <StoryButtons name={selectedPath} onClick={(e) => saveClicked(e.target.name)}>Save</StoryButtons>
@@ -117,17 +205,20 @@ const SmallStory = (props) => {
       </PopUp>)
   }
   return(<div>
-    <CreateStoryMainDiv>Your Small Story Starts Here!!</CreateStoryMainDiv>
+    <CreateStoryMainDiv>Tell Your Small Story!!</CreateStoryMainDiv>
     <StoryButtons name={'start'} onClick={(e) => buttonClicked(e.target.name)}>Start</StoryButtons>
     <br/>
     <StoryButtons name={'pathA'} onClick={(e) => buttonClicked(e.target.name)}>Path A</StoryButtons>
-    <StoryButtons>Path B</StoryButtons>
+    <StoryButtons name={'pathB'} onClick={(e) => buttonClicked(e.target.name)}>Path B</StoryButtons>
     <br/>
-    <StoryButtons>Path A-A</StoryButtons>
-    <StoryButtons>Path A-B</StoryButtons>
+    <StoryButtons name={'pathA_A'} onClick={(e) => buttonClicked(e.target.name)}>Path A-A</StoryButtons>
+    <StoryButtons name={'pathA_B'} onClick={(e) => buttonClicked(e.target.name)}>Path A-B</StoryButtons>
 
-    <StoryButtons>Path B-A</StoryButtons>
-    <StoryButtons>Path B-B</StoryButtons>
+    <StoryButtons name={'pathB_A'} onClick={(e) => buttonClicked(e.target.name)}>Path B-A</StoryButtons>
+    <StoryButtons name={'pathB_B'} onClick={(e) => buttonClicked(e.target.name)}>Path B-B</StoryButtons>
+    <br/>
+    <StoryButtons onClick={() => saveStoryClicked()}>Save Story</StoryButtons>
+    <StoryButtons onClick={() => props.smallCancelClicked()}>Cancel</StoryButtons>
   </div>)
 }
 export default SmallStory;

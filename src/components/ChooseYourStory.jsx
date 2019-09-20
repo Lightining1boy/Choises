@@ -15,6 +15,11 @@ class ChooseYourStory extends React.Component {
     this.storyClicked = this.storyClicked.bind(this);
     this.finishedStory = this.finishedStory.bind(this);
     this.createStoryClicked = this.createStoryClicked.bind(this);
+    this.cancelStoryClicked = this.cancelStoryClicked.bind(this);
+  }
+
+  cancelStoryClicked() {
+    this.setState({createStory: false});
   }
 
   createStoryClicked() {
@@ -34,7 +39,7 @@ class ChooseYourStory extends React.Component {
       return (<ChosenStory chosenStory={chosenStory} finishedStory={this.finishedStory}/>)
     }
     if(createStory) {
-      return(<ChooseStorySize/>)
+      return(<ChooseStorySize cancelStoryClicked={() => this.cancelStoryClicked()}/>)
     }
     return (<MainDiv>
       <PTag>

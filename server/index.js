@@ -18,7 +18,6 @@ app.get('/logIn', (req, res) => {
   })
 })
 
-
 app.post('/newUser', (req, res) => {
   db.createProfile(req.body,(err, Response) => {
     if (err) {
@@ -27,6 +26,10 @@ app.post('/newUser', (req, res) => {
       res.sendStatus(200);
     }
   })
+})
+
+app.post('/newStory', (req, res) => {
+  console.log(req)
 })
 
 app.use(express.static(__dirname + '/../public'));
