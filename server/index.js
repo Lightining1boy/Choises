@@ -29,7 +29,15 @@ app.post('/newUser', (req, res) => {
 })
 
 app.post('/newStory', (req, res) => {
-  console.log(req)
+  console.log(req.body)
+  db.createStory(req.body, (err, Response) => {
+    if (err) {
+      res.sendStatus(500).end();
+    } else {
+      console.log(Response);
+      res.sendStatus(200);
+    }
+  })
 })
 
 app.use(express.static(__dirname + '/../public'));

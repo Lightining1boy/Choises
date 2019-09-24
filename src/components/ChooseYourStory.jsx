@@ -35,6 +35,8 @@ class ChooseYourStory extends React.Component {
   }
   render() {
     const {storyClicked, chosenStory, createStory} = this.state;
+    const {stories} = this.props;
+
     if (storyClicked) {
       return (<ChosenStory chosenStory={chosenStory} finishedStory={this.finishedStory}/>)
     }
@@ -48,6 +50,11 @@ class ChooseYourStory extends React.Component {
       {story.map((story, index) => {
         if (story[0].title) {
           return (<StoryButtons onClick={() => this.storyClicked(story)} key={index} >{story[0].title}</StoryButtons>)
+        }
+      })}
+      {stories.map((story) => {
+        if (story.Stories[0].title) {
+          return (<StoryButtons onClick={() => this.storyClicked(story.Stories)} key={story._id} >{story.Stories[0].title}</StoryButtons>)
         }
       })}
       <br/>

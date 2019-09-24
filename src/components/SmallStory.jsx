@@ -144,7 +144,7 @@ const SmallStory = (props) => {
   }
   const saveStoryClicked = () => {
     console.log('getting here')
-    axios.post('/newStory', {story: story})
+    axios.post('/newStory', story)
     .then((Response) => {
       console.log(Response)
     })

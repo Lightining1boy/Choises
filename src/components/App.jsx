@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       UserName: '',
       Password: '',
       stories: [],
@@ -55,7 +55,10 @@ class App extends React.Component {
       if (Response.data.length === 0) {
         alert('Profile not found');
       } else {
-        this.setState({isLoggedIn: true})
+        this.setState({
+          isLoggedIn: true,
+          stories: Response.data
+        })
       }
     })
     .catch((err) => {
@@ -64,7 +67,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {isLoggedIn, UserName, Password, newUserClicked} = this.state;
+    const {isLoggedIn, UserName, Password, newUserClicked, stories} = this.state;
     if (newUserClicked) {
       return (<CreateProfile sendNewUser={this.sendNewUser}/>)
     } 
@@ -86,7 +89,7 @@ class App extends React.Component {
     }
     return(
       <MainPage>
-        <ChooseYourStory/>
+        <ChooseYourStory stories={stories}/>
       </MainPage>
     )
   }

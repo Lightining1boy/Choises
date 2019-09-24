@@ -18,6 +18,11 @@ const profileSchema = mongoose.Schema({
   password: String
 });
 
+// const storiesSchema = mongoose.Schema({
+//   SmallStories: Object,
+//   MediumStories: Object,
+//   LargeStories: Object
+// });
 const storiesSchema = mongoose.Schema({
   Stories: Array
 });
@@ -41,13 +46,20 @@ const logIn = (profile, callback) => {
     if (err) {
       callback(err);
     } else {
-      callback(null, Response);
+      Stories.find({}, (err, Response) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, Response);
+        }
+      })
+      
     }
   });
 }
 
-const createStory= (story, callback) => {
-  Stories.insertMany(story, (err, Response) => {
+const createStory = (story, callback) => {
+  Stories.insertMany({Stories: story}, (err, Response) => {
     if (err) {
       callback(err);
     } else {
@@ -56,14 +68,8 @@ const createStory= (story, callback) => {
   })
 }
 
-const getAllStories = (stories, callback) => {
-  Profile.findOne(stories, (err, Response) => {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, Response);
-    }
-  });
+const getAllStories = (callback) => {
+  ;
 }
 
 module.exports = {getAllStories, createProfile, createStory, logIn}

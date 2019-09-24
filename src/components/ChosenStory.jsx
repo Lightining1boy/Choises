@@ -15,8 +15,8 @@ class ChosenStory extends React.Component {
   }
   render() {
     const {currentPath, story} = this.state
-    const {description, choice_A, choice_B, choice_A_Result, choice_B_Result, end} = currentPath
-    if (end) {
+    const {description, choice_A, choice_B, Result_A, Result_B, ending} = currentPath
+    if (ending) {
       return (
         <div>
           <Description>
@@ -31,7 +31,7 @@ class ChosenStory extends React.Component {
         <Description>
         {description}
         </Description>
-        <ChoiceButtons onClick={() => this.choiceButtonClicked(choice_A_Result)}>{choice_A}</ChoiceButtons>
+        <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_A)}>{choice_A}</ChoiceButtons>
       </div>)
     }
     return (
@@ -39,8 +39,8 @@ class ChosenStory extends React.Component {
       <Description>
         {description}
       </Description>
-      <ChoiceButtons onClick={() => this.choiceButtonClicked(choice_A_Result)}>{choice_A}</ChoiceButtons>
-      <ChoiceButtons onClick={() => this.choiceButtonClicked(choice_B_Result)}>{choice_B}</ChoiceButtons>
+      <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_A)}>{choice_A}</ChoiceButtons>
+      <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_B)}>{choice_B}</ChoiceButtons>
     </div>)
   }
 }
