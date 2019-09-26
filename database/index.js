@@ -69,7 +69,7 @@ const createStory = (story, callback) => {
 }
 
 const getAllStories = (callback) => {
-  ;
+  
 }
 
 module.exports = {getAllStories, createProfile, createStory, logIn}

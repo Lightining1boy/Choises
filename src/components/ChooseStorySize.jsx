@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import SmallStory from './SmallStory.jsx'
+import MediumStory from './MediumStory.jsx'
 import {StorySizeButtons, Caption} from '../Styles/ChooseStorySizeStyle.jsx'
 
 const ChooseStorySize = (props) => {
@@ -7,12 +8,22 @@ const ChooseStorySize = (props) => {
   const [mediumStory, setMediumStory] = useState(false);
   const [largeStory, setLargeStory] = useState(false);
   
-  const smallCancelClicked = () => {
-    setSmallStory(false)
+  const CancelClicked = (size) => {
+    if (size === 'small') {
+      setSmallStory(false)
+    } else if (size === 'medium') {
+      setMediumStory(false)
+    }
   } 
+
   if (smallStory) {
     return (
-      <SmallStory smallCancelClicked={() => smallCancelClicked()}/>
+      <SmallStory CancelClicked={() => CancelClicked('small')}/>
+    )
+  }
+  if (mediumStory) {
+    return (
+      <MediumStory CancelClicked={() => CancelClicked('medium')}/>
     )
   }
   return (
