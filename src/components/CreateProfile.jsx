@@ -17,7 +17,7 @@ class CreateProfile extends React.Component {
   }
 
   render() {
-    const {sendNewUser} = this.props;
+    const {sendNewUser, createProfileCanceled} = this.props;
     const {newUsername, newPassword} = this.state;
     return (
       <MainPage>
@@ -26,6 +26,8 @@ class CreateProfile extends React.Component {
         <LogInText placeholder='Enter New Password' onChange={(e) => this.createNewUser(e)} value={newPassword} name='newPassword'/>
         <br/>
         <LogInButton onClick={() => sendNewUser(this.state)}> Create Profile </LogInButton>
+        <br/>
+        <LogInButton onClick={() => createProfileCanceled()}>Cancel</LogInButton>
       </MainPage>
     )
   }

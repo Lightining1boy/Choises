@@ -15,12 +15,16 @@ class App extends React.Component {
       stories: [],
       newUserClicked: false,
     };
+    this.createProfileCanceled = this.createProfileCanceled.bind(this);
     this.logInData = this.logInData.bind(this);
     this.logIn = this.logIn.bind(this);
     this.newUser = this.newUser.bind(this);
     this.sendNewUser = this.sendNewUser.bind(this);
   }
 
+  createProfileCanceled() {
+    this.setState({newUserClicked: false})
+  }
   
   sendNewUser(newUser) {
     this.setState({
@@ -69,7 +73,7 @@ class App extends React.Component {
   render() {
     const {isLoggedIn, UserName, Password, newUserClicked, stories} = this.state;
     if (newUserClicked) {
-      return (<CreateProfile sendNewUser={this.sendNewUser}/>)
+      return (<CreateProfile createProfileCanceled={this.createProfileCanceled} sendNewUser={this.sendNewUser}/>)
     } 
     else if (!isLoggedIn) {
       return (
