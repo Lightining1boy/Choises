@@ -60,8 +60,9 @@ const MediumStory = (props) => {
       setChoice_B(object.choice_B);
       setDescription(object.description);
       setTitle(object.title);
-      setPathClicked(true)
-      setSelectedPath(name)
+      setPathClicked(true);
+      setEnding(object.ending);
+      setSelectedPath(name);
     }
   }
 

@@ -36,6 +36,7 @@ class App extends React.Component {
 
     axios.post('/newUser', {UserName: newUsername, Password: newPassword})
     .then((Response) => {
+      this.logIn()
       this.setState({isLoggedIn: true});
     })
     .catch((err) => {

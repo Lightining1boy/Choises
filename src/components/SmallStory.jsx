@@ -48,8 +48,9 @@ const SmallStory = (props) => {
       setChoice_B(object.choice_B);
       setDescription(object.description);
       setTitle(object.title);
-      setPathClicked(true)
-      setSelectedPath(name)
+      setEnding(object.ending);
+      setPathClicked(true);
+      setSelectedPath(name);
     }
   }
 
