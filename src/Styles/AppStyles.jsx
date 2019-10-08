@@ -3,7 +3,7 @@ import style from 'styled-components';
 const MainPage = style.div`
   text-align: center;
   color: antiquewhite;
-  margin-top: 250px;
+  margin-top: 150px;
 `
 const LogInButton = style.button`
 color: antiquewhite;
