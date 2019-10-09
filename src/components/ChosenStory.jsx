@@ -32,6 +32,8 @@ class ChosenStory extends React.Component {
         {description}
         </Description>
         <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_A)}>{choice_A}</ChoiceButtons>
+        <br/> 
+        <ChoiceButtons onClick={() => this.props.finishedStory()}>Cancel</ChoiceButtons>
       </div>)
     }
     return (
@@ -41,6 +43,8 @@ class ChosenStory extends React.Component {
       </Description>
       <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_A)}>{choice_A}</ChoiceButtons>
       <ChoiceButtons onClick={() => this.choiceButtonClicked(Result_B)}>{choice_B}</ChoiceButtons>
+      <br/> 
+      <ChoiceButtons onClick={() => this.props.finishedStory()}>Cancel</ChoiceButtons>
     </div>)
   }
 }

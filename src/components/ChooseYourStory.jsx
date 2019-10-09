@@ -38,7 +38,11 @@ class ChooseYourStory extends React.Component {
     const {stories} = this.props;
 
     if (storyClicked) {
-      return (<ChosenStory chosenStory={chosenStory} finishedStory={this.finishedStory}/>)
+      return (
+      <ChosenStory 
+      chosenStory={chosenStory} 
+      finishedStory={this.finishedStory} 
+      />)
     }
     if(createStory) {
       return(<ChooseStorySize cancelStoryClicked={() => this.cancelStoryClicked()}/>)
